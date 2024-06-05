@@ -1,6 +1,6 @@
 package customCollections;
 
-public class CustomArrayList<T> {
+public class CustomArrayList<T> implements CustomList<T> {
 
     private T[] objects;
     private static final int DEFAULT_CAPACITY = 10;
@@ -21,7 +21,7 @@ public class CustomArrayList<T> {
         objects = (T[]) new Object[this.capacity];
     }
 
-    public CustomArrayList(CustomArrayList<? extends T> list) {
+    public CustomArrayList(CustomList<? extends T> list) {
         addAll(list);
     }
 
@@ -46,8 +46,9 @@ public class CustomArrayList<T> {
         return true;
     }
 
-    public boolean addAll(CustomArrayList<? extends T> list) {
-        for (int i = 0; i < list.size; i++) {
+    public boolean addAll(CustomList<? extends T> list) {
+        int size = list.getSize();
+        for (int i = 0; i < size; i++) {
             add(list.get(i));
         }
         return true;

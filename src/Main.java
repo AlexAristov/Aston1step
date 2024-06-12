@@ -1,24 +1,28 @@
 import customCollections.CustomArrayList;
 import customSort.BubbleSort;
+import customSort.comparators.UserAgeComparator;
+import models.User;
 
 public class Main {
     public static void main(String[] args) {
-        CustomArrayList<Integer> list2 = new CustomArrayList<>(5);
+        CustomArrayList<User> users = new CustomArrayList<>(5);
 
-        list2.add(4);
-        list2.add(3);
-        list2.add(2);
-        list2.add(6);
-        list2.add(18);
-        list2.add(3);
-        list2.add(9);
-        list2.add(5);
-        list2.add(7);
+        User user1 = new User("Alex", 27);
+        User user2 = new User("Alex", 17);
+        User user3 = new User("Alex", 15);
+        User user4 = new User("Alex", 24);
+        User user5 = new User("Alex", 18);
 
-        System.out.println(list2);
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        users.add(user5);
 
-        BubbleSort.sort(list2);
+        System.out.println(users);
 
-        System.out.println(list2);
+        BubbleSort.sort(users, new UserAgeComparator());
+
+        System.out.println(users);
     }
 }
